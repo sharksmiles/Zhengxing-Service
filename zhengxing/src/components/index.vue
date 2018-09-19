@@ -6,12 +6,12 @@
       <div class="nav">
         <router-link  tag="div"  to='/Party_service' class="nav_left"><img src="../../static/img/dang@2x.png" alt=""><p>党建引领</p></router-link>
         <div class="nav_right">
-          <div><img src="../../static/img/zhengwu@2x.png" alt=""><p>政务服务</p></div>
-          <div><img src="../../static/img/shenghuo@2x.png" alt=""><p>生活服务</p></div>
-          <div><img src="../../static/img/falv@2x.png" alt=""><p>法律服务</p></div>
+          <router-link  tag="div"  to='/Affairs'><img src="../../static/img/zhengwu@2x.png" alt=""><p>政务服务</p></router-link>
+          <router-link  tag="div"  to='#'><img src="../../static/img/shenghuo@2x.png" alt=""><p>生活服务</p></router-link>
+          <router-link  tag="div"  to='/Laws'><img src="../../static/img/falv@2x.png" alt=""><p>法律服务</p></router-link>
           <div><img src="../../static/img/wenti@2x.png" alt=""><p>文体服务</p></div>
-          <div><img src="../../static/img/dang@2x.png" alt=""><p>关爱服务</p></div>
-          <div><img src="../../static/img/dangy@2x.png" alt=""><p>党员服务</p></div>
+          <router-link  tag="div"  to='/Love'><img src="../../static/img/zhiy@2x.png" alt=""><p>关爱服务</p></router-link>
+          <router-link  tag="div"  to='/Party_member' class="nav_left"><img src="../../static/img/dangy@2x.png" alt=""><p>党员服务</p></router-link>
         </div>
       </div>
       <div class="news">

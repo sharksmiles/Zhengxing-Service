@@ -46,14 +46,14 @@
        </div>
       <Links :tar="links"></Links>
       <div v-if="$route.params.id==4.1">
-        <test1 :my_goods="my_goods">
+        <test1 :data="item" v-for="(item,index) in my_goods" :key="index" >
           <!--<span>{{item.price}}积分</span>-->
           <button>认领</button>
         </test1>
       </div>
       <div v-if="$route.params.id==4.2">
-        <test1 :my_goods="my_goods">
-          <!--<button>兑换</button>-->
+        <test1 :data="item" v-for="(item,index) in my_goods" :key="index" >
+          <button>兑换</button>
         </test1>
       </div>
 
@@ -99,7 +99,7 @@ export default {
         ]
       ],
       my_goods:[
-        {img:"http://img3.99114.com/group1/M00/19/7C/wKgGMFgqstqAQZ8nAAOgcaizlvY072.jpg",name:"清风提装卫生纸",price:30,desc:"今天要加班加班加班24号前要上线要上线"},
+        {img:"http://img3.99114.com/group1/M00/19/7C/wKgGMFgqstqAQZ8nAAOgcaizlvY072.jpg",name:"清风提装卫生纸",price:30,desc:"今天要加班加班加班24号前要上线要上线前要上线要上线前要上线要上线前要上线要上线前要上线要上线前要上线要上线"},
         {img:"http://img3.99114.com/group1/M00/19/7C/wKgGMFgqstqAQZ8nAAOgcaizlvY072.jpg",name:"清风提装卫生纸",price:30,desc:"今天要加班加班加班24号前要上线要上线"},
         {img:"http://img3.99114.com/group1/M00/19/7C/wKgGMFgqstqAQZ8nAAOgcaizlvY072.jpg",name:"清风提装卫生纸",price:180,desc:"今天要加班加班加班24号前要上线要上线"}
       ]
