@@ -33,6 +33,7 @@ export default {
   }
   .my-goods .img {
     width:   30%;
+    height: 90px;
     border: 1px solid #e0e0e0;
   }
   .my-goods .img img{
@@ -52,6 +53,11 @@ export default {
   .item_name p{
     font-size: 13px;
     color: #A5ABD4;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
   .my-goods span{
      width: 20%;

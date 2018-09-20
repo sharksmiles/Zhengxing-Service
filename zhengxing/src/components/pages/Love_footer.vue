@@ -113,6 +113,7 @@ export default {
     padding-bottom:30px;
     padding-top: 20px;
     position: relative;
+    background-color: #fff;
   }
   .iphone{
     width: 25px;
@@ -175,10 +176,10 @@ export default {
     border-bottom: 1px solid #e0e0e0;
     box-shadow: 1px 1px 3px #e0e0e0;
     margin-top: 10px;
+    background-color: #fff;
   }
   .my-goods1{
     display: flex;
-
   }
   .my-goods1 .img {
     width:   30%;

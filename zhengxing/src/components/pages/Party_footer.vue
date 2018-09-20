@@ -45,9 +45,8 @@
          </div>
        </div>
       <Links :tar="links"></Links>
-      <div v-if="$route.params.id==4.1">
+      <div v-if="$route.params.id==4.1||$route.params.id==4">
         <test1 :data="item" v-for="(item,index) in my_goods" :key="index" >
-          <!--<span>{{item.price}}积分</span>-->
           <button>认领</button>
         </test1>
       </div>
@@ -56,8 +55,15 @@
           <button>兑换</button>
         </test1>
       </div>
-
-
+      <div v-if="$route.params.id==4.3">
+        <test1 :data="item" v-for="(item,index) in my_goods" :key="index" >
+          <button style="background-color: #fff;color: #e0e0e0; border: 1px solid #a2a4a7" >已兑换</button>
+        </test1>
+      </div>
+      <div v-if="$route.params.id==4.4">
+        <div>1、规则</div>
+        </test1>
+      </div>
     </div>
   </div>
 </template>

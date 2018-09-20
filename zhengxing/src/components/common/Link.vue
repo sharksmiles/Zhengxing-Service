@@ -22,6 +22,8 @@ export default {
     height: 45px;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+    background-color: #fff;
   }
   li{
     flex: 3;
@@ -34,7 +36,7 @@ export default {
     border-right: none;
   }
   li:hover{
-    background-color: #eaeaea;
+    background-color: #D4D4D4;
   }
 
 </style>

@@ -10,7 +10,14 @@ import Laws from '../components/pages/Laws.vue'
 import Laws_footer from '../components/pages/Laws_footer.vue'
 import Love from '../components/pages/Love.vue'
 import Love_footer from '../components/pages/Love_footer.vue'
-
+import Style from '../components/pages/Style.vue'
+import Style_footer from '../components/pages/Style_footer.vue'
+import Life from '../components/pages/Life.vue'
+import Life_footer from '../components/pages/Life_footer.vue'
+import join from '../components/pages/join.vue'
+import Team_Service from '../components/pages/Team_Service.vue'
+import Repair from '../components/pages/Repair.vue'
+import Complaint from '../components/pages/Complaint.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -29,6 +36,7 @@ export default new Router({
           path: '/Party_footer/:id',
           name: 'Party_footer',
           component: Party_footer
+
         }
       ],
       redirect: '/Party_footer/1'
@@ -50,6 +58,25 @@ export default new Router({
       path: '/Affairs',
       name: 'Affairs',
       component: Affairs
+    },
+    {
+      path: '/join',
+      name: 'join',
+      component: join
+    },
+    {
+      path: '/Team_Service',
+      name: 'Team_Service',
+      component: Team_Service
+    },
+    {
+      path: '/Repair',
+      name: 'Repair',
+      component: Repair
+    }, {
+      path: '/Complaint',
+      name: 'Complaint',
+      component:Complaint
     },
     {
       path: '/Laws',
@@ -76,6 +103,32 @@ export default new Router({
         }
       ],
       redirect: '/Love_footer/1'
+    },
+    {
+      path: '/Style',
+      name: 'Style',
+      component: Style,
+      children: [
+        {
+          path: '/Style_footer/:id',
+          name: 'Style_footer',
+          component: Style_footer
+        }
+      ],
+      redirect: '/Style_footer/1'
+    },
+    {
+      path: '/Life',
+      name: 'Life',
+      component: Life,
+      children: [
+        {
+          path: '/Life_footer/:id',
+          name: 'Life_footer',
+          component:Life_footer
+        }
+      ],
+      redirect: '/Life_footer/1'
     }
   ]
 })

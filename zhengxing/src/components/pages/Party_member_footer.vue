@@ -1,7 +1,7 @@
 <template>
 <div>
   <div  v-if="$route.params.id==1">
-    <div v-for="(items,index) in pages" :key="index">
+    <div v-for="(items,index) in pages" :key="index" style="background-color: #fff;">
       <test1 :data="items" ></test1>
     </div>
   </div>
@@ -70,7 +70,7 @@
     </p>
   </div>
   </div>
-  <div  v-if="$route.params.id==3">
+  <div  v-if="$route.params.id==3" style="background-color: #fff;">
     <div class="courses">
       <div class="course_img">
         <img src="http://img.kutoo8.com/upload/thumb/590681/dd7fac39277903a192501756826f4209_960x540.jpg" alt="">
@@ -90,7 +90,7 @@
       <p>高中的时候，有个姐姐和我说：“看多了电视剧，真的觉得电视剧是一种大众化的、通俗化的东西，从里面很难发掘一些有深度的东西。我觉得它过度地迎合消费者的口味，导致了某些精神层面的缺失。”对于电视机，木心也有过相关的文章，他说：“外国人称电视为“傻瓜机”，整天就坐在那里看着，听什么是什么，可不就是个傻瓜嘛。”不过，木心也并非全然反对电视，他也肯定电视存在有益的成分。一下子又扯远了，我想说的是，从那个时候开始，我心中的天平慢慢地向文字倾斜了。</p>
     </div>
   </div>
-  <div  v-if="$route.params.id==4">
+  <div  v-if="$route.params.id==4" style="background-color: #fff;">
     <div class="form_title">
       <p class="form_left">姓名</p><div class="form_right"><input type="text" v-model="name" placeholder="您的真实姓名" ></div>
     </div>
@@ -98,22 +98,22 @@
       <p class="form_left">性别</p>
       <div class="form_right">
         <label>
-          <span>男</span>
+          <span style="margin-right: 3px">男</span>
           <input type="radio" value="man"  id="man" v-model="picked" style="margin-right: 20px">
-          <span>女</span>
+          <span style="margin-right: 3px">女</span>
           <input type="radio" value="women" v-model="picked">
         </label>
       </div>
     </div>
     <div class="form_title">
-      <p class="form_left">出生日期</p><div class="form_right"><div>年月日</div></div>
+      <p class="form_left">出生日期</p><div class="form_right"><input type="date" v-model="date1"></div>
     </div>
     <div class="form_title">
       <div class="form_left2"><span>民族</span><input type="text" placeholder="汉"></div>
       <div class="form_right2"><span>籍贯</span><input type="text" placeholder="湖北武汉"></div>
     </div>
     <div class="form_title">
-      <p class="form_left">入党日期</p><div class="form_right"><div >年月日</div></div>
+      <p class="form_left">入党日期</p><div class="form_right"><input type="date" v-model="date2"></div>
     </div>
     <div class="form_title">
       <p class="form_left">所在支部</p><div class="form_right"><input type="text" placeholder="填写您所在的支部" ></div>
@@ -128,7 +128,7 @@
       <p class="form_left">现居住地</p><div class="form_right"><input type="text" placeholder="填写您目前的居住地址" ></div>
     </div>
     <div class="form_title">
-      <p class="form_left">进入当前党支部日期</p><div class="form_right"><div>年月日</div></div>
+      <p class="form_left">进入当前党支部日期</p><div class="form_right"><input type="date" v-model="date3"></div>
     </div>
     <button class="button">提交</button>
   </div>
@@ -154,6 +154,9 @@ export default{
       zuzhizhuanjiewu:false,
       name: '',
       picked: true,
+      date1:"2012-09-06",
+      date2:"2018-09-06",
+      date3:"2015-09-06",
     }
   },
   methods:{
@@ -205,7 +208,7 @@ export default{
   }
 }
 </script>
-<style>
+<style scoped>
   body{
     background-color: #fff;
   }
@@ -306,6 +309,10 @@ export default{
   .form_title .form_right{
     flex: 8;
     padding-left: 10px;
+  }
+  .form_right label span{
+    position: relative;
+    top:-2px
   }
   .form_title .form_left2{
     width: 50%;
