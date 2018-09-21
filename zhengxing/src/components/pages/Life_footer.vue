@@ -76,9 +76,13 @@ export default{
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
+.red_wuye{
+  background-color: #F6F4E8;
+  padding-bottom:30px;
+}
 .red_wuye img{
   width: 100%;
-  height: 100%;
+
 }
 .red_wuye div{
   display: inline-block;

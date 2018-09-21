@@ -132,6 +132,47 @@
     </div>
     <button class="button">提交</button>
   </div>
+  <div  v-if="$route.params.id==5" class="part5">
+    <div class="content">
+      <div class="content_left"><p>工&nbsp;&nbsp;作&nbsp;&nbsp;状&nbsp;&nbsp;况：</p></div>
+     <div class="content_right">
+       <select>
+         <option value="volvo">在&nbsp;&nbsp;职</option>
+         <option value="saab">退&nbsp;&nbsp;&nbsp;休</option>
+       </select>
+     </div>
+    </div>
+    <div class="content">
+      <div class="content_left"><p>收&nbsp;&nbsp;入&nbsp;&nbsp;方&nbsp;&nbsp;式：</p></div>
+      <div class="content_right">
+        <select>
+          <option value="volvo">月&nbsp;薪&nbsp;制</option>
+          <option value="saab">年&nbsp;薪&nbsp;制</option>
+        </select>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content_left"><p>税&nbsp;&nbsp;后&nbsp;&nbsp;收&nbsp;&nbsp;入：</p></div>
+      <div class="content_right">
+        <input type="text">
+        <p>按新颁布的税后比率计算</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content_left"><p></p></div>
+      <div class="content_right">
+       <button>计算</button>
+      </div>
+    </div>
+    <div class="content_money">
+      <div class="content_money_left"><p>应&nbsp;&nbsp;缴&nbsp;&nbsp;党&nbsp;&nbsp;费：</p></div>
+      <div class="content_money_right">
+        <input type="text">
+        <span>元/月</span>
+      </div>
+    </div>
+
+  </div>
 </div>
 </template>
 <script>
@@ -215,9 +256,9 @@ export default{
   .beijing{
     background-size: 100%;
     width:100%;
-    height: auto;
     color:#0560AC;
     background-image: url(../../../static/img/zhuzhi.jpg);
+    padding-bottom:20%;
   }
   .beijing div{
     width: 88%;
@@ -348,5 +389,83 @@ export default{
     background-color: red;
     border: 1px solid red;
     color: #fff;
+  }
+  .part5{
+    color: #83AFD3;
+    background-image: url(../../../static/img/党费.jpg);
+    -webkit-background-size:cover;
+    background-size:cover;
+    padding-top:50px;
+    padding-bottom:50%;
+  }
+  .content{
+    width:60%;
+    margin-left:15%;
+    display: flex;
+    margin-bottom:40px;
+  }
+  .content_left{
+    width: 50%;
+  }
+  .content_left p{
+    position: relative;
+    top:2px
+  }
+  .content_right{
+    width: 50%;
+  }
+  .content_right select{
+    width: 100%;
+    margin-left:5%;
+    padding-bottom:3px;
+    padding-left:20%;
+    padding-right:10%;
+  }
+  .content_right input{
+    width: 68%;
+    margin-left:5%;
+    padding-bottom:3px;
+    padding-left:20%;
+    padding-right:10%;
+  }
+  .content_right button{
+    width: 100%;
+    margin-left:5%;
+    border-radius: 5px;
+    background-color: red;
+    border: 1px solid red;
+    padding: 5px;
+    color: #fff;
+  }
+  .content_right p{
+    width: 130%;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  span{
+    font-size: 14px;
+  display: inline-block;
+    width: 40px;
+    position: relative;
+    top:2px;
+  }
+  .content_money{
+    display: flex;
+    margin-left: 15%;
+    margin-top:40px;
+  }
+  .content_money_left{
+    width: 50%;
+  }
+  .content_money_right{
+    width: 120%;
+
+  }
+  .content_money_right input{
+    width: 23%;
+    margin-left:5%;
+    padding-bottom:3px;
+    padding-left:20%;
+    padding-right:10%;
   }
 </style>
