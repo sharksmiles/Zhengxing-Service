@@ -15,10 +15,12 @@ import Style_footer from '../components/pages/Style_footer.vue'
 import Life from '../components/pages/Life.vue'
 import Life_footer from '../components/pages/Life_footer.vue'
 import join from '../components/pages/join.vue'
+import joins from '../components/pages/joins.vue'
 import Team_Service from '../components/pages/Team_Service.vue'
 import Repair from '../components/pages/Repair.vue'
 import Complaint from '../components/pages/Complaint.vue'
-Vue.use(Router);
+import Details from '../components/common/Details'
+Vue.use(Router)
 
 export default new Router({
   routes: [
@@ -26,6 +28,24 @@ export default new Router({
       path: '/',
       name: 'index',
       component: index
+    },
+    {
+      path: '/Details/:id',
+      name: 'Details',
+      component: Details,
+      props: true
+    },
+    {
+      path: '/join/:id/:type',
+      name: 'join',
+      component: join,
+      props: true
+    },
+    {
+      path: '/joins/:id/:type',
+      name: 'joins',
+      component: joins,
+      props: true
     },
     {
       path: '/Party_service',
@@ -60,11 +80,6 @@ export default new Router({
       component: Affairs
     },
     {
-      path: '/join',
-      name: 'join',
-      component: join
-    },
-    {
       path: '/Team_Service',
       name: 'Team_Service',
       component: Team_Service
@@ -76,7 +91,7 @@ export default new Router({
     }, {
       path: '/Complaint',
       name: 'Complaint',
-      component:Complaint
+      component: Complaint
     },
     {
       path: '/Laws',
@@ -125,7 +140,7 @@ export default new Router({
         {
           path: '/Life_footer/:id',
           name: 'Life_footer',
-          component:Life_footer
+          component: Life_footer
         }
       ],
       redirect: '/Life_footer/1'

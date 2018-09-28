@@ -1,14 +1,15 @@
 <template>
 <div>
   <div  v-if="$route.params.id==1">
-    <div v-for="(items,index) in pages" :key="index" style="background-color: #fff;">
+    <div v-for="(items,index) in part1" :key="index" style="background-color: #fff;">
+      <router-link  tag="div"  :to='"/Details/"+items.id'>
       <test1 :data="items" ></test1>
+      </router-link>
     </div>
   </div>
   <div  v-if="$route.params.id==2">
-      <div class="beijing">
-    <p>
-    <div @click="zuzhizhuanjiediyi">&nbsp;&nbsp;一、服务对象<i class="jiantou"><img src="../../../static/img/going.png" alt=""></i></div>
+      <div class="beijing" style="padding-top: 10px">
+    <div @click="zuzhizhuanjiediyi" >&nbsp;&nbsp;一、服务对象<i class="jiantou"><img src="../../../static/img/going.png" alt=""></i></div>
     <dt class="xiala" v-show="zuzhizhuanjieyi">
       <br>&emsp;
     <pre>1、中共党员</pre>
@@ -67,28 +68,15 @@
     <pre>3、符合党组织关系转接有关规定</pre>
     <br>
     </dt>
-    </p>
   </div>
   </div>
   <div  v-if="$route.params.id==3" style="background-color: #fff;">
-    <div class="courses">
+    <router-link  tag="div"  :to='"/Details/"+item.id' class="courses" v-for="(item,index) in part3" :key="index">
       <div class="course_img">
-        <img src="http://img.kutoo8.com/upload/thumb/590681/dd7fac39277903a192501756826f4209_960x540.jpg" alt="">
+        <img :src="item.image" alt="">
       </div>
-      <p>高中的时候，有个姐姐和我说：“看多了电视剧，真的觉得电视剧是一种大众化的、通俗化的东西，从里面很难发掘一些有深度的东西。我觉得它过度地迎合消费者的口味，导致了某些精神层面的缺失。”对于电视机，木心也有过相关的文章，他说：“外国人称电视为“傻瓜机”，整天就坐在那里看着，听什么是什么，可不就是个傻瓜嘛。”不过，木心也并非全然反对电视，他也肯定电视存在有益的成分。一下子又扯远了，我想说的是，从那个时候开始，我心中的天平慢慢地向文字倾斜了。</p>
-    </div>
-    <div class="courses">
-      <div class="course_img">
-        <img src="http://img.kutoo8.com/upload/thumb/590681/dd7fac39277903a192501756826f4209_960x540.jpg" alt="">
-      </div>
-      <p>高中的时候，有个姐姐和我说：“看多了电视剧，真的觉得电视剧是一种大众化的、通俗化的东西，从里面很难发掘一些有深度的东西。我觉得它过度地迎合消费者的口味，导致了某些精神层面的缺失。”对于电视机，木心也有过相关的文章，他说：“外国人称电视为“傻瓜机”，整天就坐在那里看着，听什么是什么，可不就是个傻瓜嘛。”不过，木心也并非全然反对电视，他也肯定电视存在有益的成分。一下子又扯远了，我想说的是，从那个时候开始，我心中的天平慢慢地向文字倾斜了。</p>
-    </div>
-    <div class="courses">
-      <div class="course_img">
-        <img src="http://img.kutoo8.com/upload/thumb/590681/dd7fac39277903a192501756826f4209_960x540.jpg" alt="">
-      </div>
-      <p>高中的时候，有个姐姐和我说：“看多了电视剧，真的觉得电视剧是一种大众化的、通俗化的东西，从里面很难发掘一些有深度的东西。我觉得它过度地迎合消费者的口味，导致了某些精神层面的缺失。”对于电视机，木心也有过相关的文章，他说：“外国人称电视为“傻瓜机”，整天就坐在那里看着，听什么是什么，可不就是个傻瓜嘛。”不过，木心也并非全然反对电视，他也肯定电视存在有益的成分。一下子又扯远了，我想说的是，从那个时候开始，我心中的天平慢慢地向文字倾斜了。</p>
-    </div>
+      <p>{{item.post_title}}</p>
+    </router-link>
   </div>
   <div  v-if="$route.params.id==4" style="background-color: #fff;">
     <div class="form_title">
@@ -99,38 +87,49 @@
       <div class="form_right">
         <label>
           <span style="margin-right: 3px">男</span>
-          <input type="radio" value="man"  id="man" v-model="picked" style="margin-right: 20px">
+          <input type="radio" value="男"  id="man" v-model="sex" style="margin-right: 20px">
           <span style="margin-right: 3px">女</span>
-          <input type="radio" value="women" v-model="picked">
+          <input type="radio" value="女" v-model="sex">
         </label>
       </div>
     </div>
     <div class="form_title">
-      <p class="form_left">出生日期</p><div class="form_right"><input type="date" v-model="date1"></div>
+      <p class="form_left">出生日期</p><div class="form_right"><input type="date" v-model="birthday"></div>
     </div>
     <div class="form_title">
-      <div class="form_left2"><span>民族</span><input type="text" placeholder="汉"></div>
-      <div class="form_right2"><span>籍贯</span><input type="text" placeholder="湖北武汉"></div>
+      <div class="form_left2"><span>民族</span><input type="text" placeholder="汉" v-model="nation"></div>
+      <div class="form_right2"><span>籍贯</span><input type="text" placeholder="湖北武汉" v-model="native_place"></div>
     </div>
     <div class="form_title">
-      <p class="form_left">入党日期</p><div class="form_right"><input type="date" v-model="date2"></div>
+      <p class="form_left">入党日期</p><div class="form_right"><input type="date" v-model="riqi"></div>
     </div>
     <div class="form_title">
-      <p class="form_left">所在支部</p><div class="form_right"><input type="text" placeholder="填写您所在的支部" ></div>
+      <p class="form_left">所在支部</p>
+      <div class="form_right">
+        <select style="padding: 5px 10px" v-model="dzb_id">
+          <option v-for="item in dzb" :value='item.id' >  {{item.title}}  </option>
+          <!--<option value="2">   第一党支部   </option>-->
+          <!--<option value="3">   第三党支部   </option>-->
+          <!--<option value="4">   第四党支部   </option>-->
+        </select>
+      </div>
     </div>
     <div class="form_title">
-      <p class="form_left">党内职务</p><div class="form_right"><input type="text" placeholder="填写您所在党内职务" ></div>
+      <p class="form_left">党内职务</p><div class="form_right"><input type="text" placeholder="填写您所在党内职务" v-model="zhiwu"></div>
     </div>
     <div class="form_title">
-      <p class="form_left">联系电话</p><div class="form_right"><input type="text" placeholder="填写您的联系电话" ></div>
+      <p class="form_left">联系电话</p><div class="form_right"><input type="text" placeholder="填写您的联系电话"  v-model="tel"></div>
     </div>
     <div class="form_title">
-      <p class="form_left">现居住地</p><div class="form_right"><input type="text" placeholder="填写您目前的居住地址" ></div>
+      <p class="form_left">现居住地</p><div class="form_right"><input type="text" placeholder="填写您目前的居住地址" v-model="address"></div>
     </div>
     <div class="form_title">
-      <p class="form_left">进入当前党支部日期</p><div class="form_right"><input type="date" v-model="date3"></div>
+      <p class="form_left">进入当前党支部日期</p><div class="form_right"><input type="date" v-model="now_riqi"></div>
     </div>
-    <button class="button">提交</button>
+    <div class="form_title">
+      <p class="form_left">兴趣爱好</p><div class="form_right"><input type="text" placeholder="填写您的兴趣爱好" v-model="hobby"></div>
+    </div>
+    <button class="button" @click="submit" id="submit">提交</button>
   </div>
   <div  v-if="$route.params.id==5" class="part5">
     <div class="content">
@@ -176,75 +175,155 @@
 </div>
 </template>
 <script>
-  import test1 from '../common/test1.vue'
+import test1 from '../common/test1.vue'
 export default{
   components: {
     test1
   },
-  data(){
-    return{
-      pages:[
-        {img:"http://img3.99114.com/group1/M00/19/7C/wKgGMFgqstqAQZ8nAAOgcaizlvY072.jpg",name:"清风提装卫生纸",price:30,desc:"今上线今天号加班班24号前要上线要上线上线要上线上线要上线上线要上线上线要上线上线要上线"},
-        {img:"http://img3.99114.com/group1/M00/19/7C/wKgGMFgqstqAQZ8nAAOgcaizlvY072.jpg",name:"清风提装卫生纸",price:30,desc:"今天要加班加班加班24号前要上线要上线"},
-        {img:"http://img3.99114.com/group1/M00/19/7C/wKgGMFgqstqAQZ8nAAOgcaizlvY072.jpg",name:"清风提装卫生纸",price:180,desc:"今天要加班加班加班24号前要上线要上线"}
-      ],
-      zuzhizhuanjieyi:false,
-      zuzhizhuanjieer:false,
-      zuzhizhuanjiesan:false,
-      zuzhizhuanjiesi:false,
-      zuzhizhuanjiewu:false,
+  data () {
+    return {
+      zuzhizhuanjieyi: false,
+      zuzhizhuanjieer: false,
+      zuzhizhuanjiesan: false,
+      zuzhizhuanjiesi: false,
+      zuzhizhuanjiewu: false,
       name: '',
-      picked: true,
-      date1:"2012-09-06",
-      date2:"2018-09-06",
-      date3:"2015-09-06",
+      sex: '男',
+      birthday: '2012-09-06',
+      nation: '',
+      native_place: '',
+      riqi: '2011-11-11',
+      dzb_id: '1',
+      zhiwu: '',
+      tel: '',
+      address: '',
+      now_riqi: '2018-03-04',
+      hobby: '',
+      part1: [],
+      part3: [],
+      part2: [],
+      part4: [],
+      part5: [],
+      code: 0,
+      dzb: []
     }
   },
-  methods:{
-    zuzhizhuanjiediyi(){
-      if(this.zuzhizhuanjieyi == true){
-        this.zuzhizhuanjieyi = false;
-        document.getElementsByClassName("jiantou")[0].style.transform = "rotate(0deg)";
-      }else{
-        document.getElementsByClassName("jiantou")[0].style.transform = "rotate(90deg)";
-        this.zuzhizhuanjieyi = true;
+  mounted () {
+    let that = this
+    this.$axios.get('/Dangyuan/index', {
+    })
+      .then(function (res) {
+        that.part1 = res.data.data
+      })
+    this.$axios.get('/Dangyuan/service_object', {
+    })
+      .then(function (res) {
+        that.part2 = res.data.data
+      })
+    this.$axios.get('/Dangyuan/kecheng', {
+    })
+      .then(function (res) {
+        that.part3 = res.data.data
+      })
+    this.$axios.get('/Dangyuan/dangzhibu', {
+    })
+      .then(function (res) {
+        that.dzb = res.data.data
+      })
+    this.$axios.get('/Dangyuan/dangyuan', {
+      params: {
+        openid: 1123
+      }
+    })
+      .then(function (res) {
+        that.code = res.data.code
+        console.log(that.code)
+        if (that.code !== 1) {
+          document.getElementById('submit').style.background = '#eaeaea'
+          document.getElementById('submit').style.border = '#eaeaea'
+        }
+      })
+  },
+  methods: {
+    zuzhizhuanjiediyi () {
+      if (this.zuzhizhuanjieyi == true) {
+        this.zuzhizhuanjieyi = false
+        document.getElementsByClassName('jiantou')[0].style.transform = 'rotate(0deg)'
+      } else {
+        document.getElementsByClassName('jiantou')[0].style.transform = 'rotate(90deg)'
+        this.zuzhizhuanjieyi = true
       }
     },
-    zuzhizhuanjiedier(){
-      if(this.zuzhizhuanjieer == true){
-        this.zuzhizhuanjieer = false;
-        document.getElementsByClassName("jiantou")[1].style.transform = "rotate(0deg)";
-      }else{
-        this.zuzhizhuanjieer = true;
-        document.getElementsByClassName("jiantou")[1].style.transform = "rotate(90deg)";
+    zuzhizhuanjiedier () {
+      if (this.zuzhizhuanjieer == true) {
+        this.zuzhizhuanjieer = false
+        document.getElementsByClassName('jiantou')[1].style.transform = 'rotate(0deg)'
+      } else {
+        this.zuzhizhuanjieer = true
+        document.getElementsByClassName('jiantou')[1].style.transform = 'rotate(90deg)'
       }
     },
-    zuzhizhuanjiedisan(){
-      if(this.zuzhizhuanjiesan == true){
-        this.zuzhizhuanjiesan = false;
-        document.getElementsByClassName("jiantou")[2].style.transform = "rotate(0deg)";
-      }else{
-        this.zuzhizhuanjiesan = true;
-        document.getElementsByClassName("jiantou")[2].style.transform = "rotate(90deg)";
+    zuzhizhuanjiedisan () {
+      if (this.zuzhizhuanjiesan == true) {
+        this.zuzhizhuanjiesan = false
+        document.getElementsByClassName('jiantou')[2].style.transform = 'rotate(0deg)'
+      } else {
+        this.zuzhizhuanjiesan = true
+        document.getElementsByClassName('jiantou')[2].style.transform = 'rotate(90deg)'
       }
     },
-    zuzhizhuanjiedisi(){
-      if(this.zuzhizhuanjiesi == true){
-        this.zuzhizhuanjiesi = false;
-        document.getElementsByClassName("jiantou")[3].style.transform = "rotate(0deg)";
-      }else{
-        this.zuzhizhuanjiesi = true;
-        document.getElementsByClassName("jiantou")[3].style.transform = "rotate(90deg)";
+    zuzhizhuanjiedisi () {
+      if (this.zuzhizhuanjiesi == true) {
+        this.zuzhizhuanjiesi = false
+        document.getElementsByClassName('jiantou')[3].style.transform = 'rotate(0deg)'
+      } else {
+        this.zuzhizhuanjiesi = true
+        document.getElementsByClassName('jiantou')[3].style.transform = 'rotate(90deg)'
       }
     },
-    zuzhizhuanjiediwu(index){
-      if(this.zuzhizhuanjiewu == true){
-        this.zuzhizhuanjiewu = false;
-        document.getElementsByClassName("jiantou")[4].style.transform = "rotate(0deg)";
-      }else{
-        this.zuzhizhuanjiewu = true;
-        document.getElementsByClassName("jiantou")[4].style.transform = "rotate(90deg)";
+    zuzhizhuanjiediwu (index) {
+      if (this.zuzhizhuanjiewu == true) {
+        this.zuzhizhuanjiewu = false
+        document.getElementsByClassName('jiantou')[4].style.transform = 'rotate(0deg)'
+      } else {
+        this.zuzhizhuanjiewu = true
+        document.getElementsByClassName('jiantou')[4].style.transform = 'rotate(90deg)'
       }
+    },
+    submit () {
+      let that = this
+      if (that.code == 1) {
+        this.$axios.get('/Dangyuan/dy_submit', {
+          params: {
+            openid: 123456,
+            name: that.name,
+            sex: that.sex,
+            birthday: that.birthday,
+            nation: that.nation,
+            native_place: that.native_place,
+            riqi: that.riqi,
+            dzb_id: that.dzb_id,
+            zhiwu: that.zhiwu,
+            tel: that.tel,
+            address: that.address,
+            now_riqi: that.now_riqi,
+            hobby: that.hobby
+          }
+        })
+          .then(function (res) {
+            console.log(res.data.code)
+            if (res.data.code == 1) {
+              alert('提交成功！')
+              window.history.go(-1);
+            } else {
+              alert('缺少参数，请重填！')
+            }
+          })
+
+      } else {
+        alert('您已提交过！')
+      }
+      return 0;
     }
   }
 }
@@ -371,13 +450,13 @@ export default{
     flex: 7;
   }
   .form_title .form_right2 span{
-    width: 50%;
+    width: 35%;
     padding-left: 20px;
-
+    display: inline-block;
   }
   .form_title .form_right2 input{
-    width: 50%;
-    padding-left: 20px;
+    width: 40%;
+    padding-right: 5%;
   }
   .button{
     margin-left: 40%;

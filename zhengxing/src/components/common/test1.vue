@@ -1,25 +1,23 @@
 <template>
   <div>
     <div class="my-goods" >
-      <div class="img"><img :src="data.img" ></div>
+      <div class="img"><img :src="data.image" ></div>
       <div class="item_name">
-        <h4>{{data.name}}</h4>
-        <p>{{data.desc}}</p>
+        <h4 style="display: inline-block">{{data.post_title}}</h4> {{data.jifen}}积分
+        <p>{{data.post_content}}</p>
       </div>
       <slot>
-        <!--<span>{{item.price}}积分</span>-->
-        <!--<button>认领</button>-->
       </slot>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props:["data"],
-   data(){
-       return{
-       }
-   }
+  props: ['data'],
+  data () {
+    return {
+    }
+  }
 }
 </script>
 <style scoped>

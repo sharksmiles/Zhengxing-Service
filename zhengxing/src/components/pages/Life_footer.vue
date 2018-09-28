@@ -1,8 +1,12 @@
 <template>
   <div>
-    <div v-if="$route.params.id==1" class="life" v-for="item in page">
-     <div class="life_img"></div>
-      <div class="life_desc"><p>汉兴街的前生为汉兴去农业委员会汉兴街的前生为汉兴去农业委员会汉兴街的前生为汉兴去农业委员会汉兴街的前生为汉兴去农业委员会汉兴街的前生为汉兴去农业委员会汉兴街的前生为汉兴去农业委员会</p></div>
+    <div v-if="$route.params.id==1">
+      <router-link  tag="div"  :to='"/Details/"+item.id' v-for="(item,index) in part1" :key="index" class="life" >
+     <div class="life_img" :style="'background-image: url('+item.image+');'"></div>
+      <div class="life_desc">
+        <p>{{item.post_content}}</p>
+      </div>
+      </router-link>
     </div>
     <div v-if="$route.params.id==2" >
       <div class="red_wuye">
@@ -13,30 +17,50 @@
       </div>
     </div>
     <div v-if="$route.params.id==3" >
-      <div class="healthy"  v-for="item in page">
-      <div class="healthy_left"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537445189077&di=7b7715434112748d6bfca5de63fef404&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-fo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2Fa71ea8d3fd1f4134c10569b3201f95cad0c85ec8.jpg" alt=""></div>
+      <router-link  tag="div"  :to='"/Details/"+item.id' class="healthy"  v-for="(item,index)  in part3" :key="index" >
+      <div class="healthy_left"><img :src="item.image" alt=""></div>
       <div class="healthy_right">
-        <p>单位：XX街第一卫生服务中心</p>
-        <p>地址：XX街道XX小区</p>
-        <p>服务时间：每周三上午</p>
-        <p>电话：511871XX</p>
+        <p>单位：{{item.post_title}}</p>
+        <p>地址：{{item.location}}</p>
+        <p>服务时间：{{item.service_time}}</p>
+        <p>电话：{{item.tel}}</p>
       </div>
         <div class="healthy_img"> <img src="../../../static/img/biaoji.png" alt=""></div>
+      </router-link>
       </div>
-      </div>
-    <div v-if="$route.params.id==4" class="part4" v-for="item in page">
-      <div class="iphone"><img src="../../../static/img/iphone.png" alt=""></div>
-      <h4>重庆人家</h4>
-      <p>服务内容：餐饮、中、晚餐</p>
+    <div v-if="$route.params.id==4" class="part4" v-for="item in part4">
+      <div class="iphone"><a href="tel:item.tel"><img src="../../../static/img/iphone.png" alt=""></a></div>
+      <h4>{{item.post_title}}</h4>
+      <p>服务内容：{{item.zhiwu}}</p>
     </div>
   </div>
 </template>
 <script>
 export default{
-  data(){
+  data () {
     return {
-      page:["1","2","3"]
+      part1: [],
+      part3: [],
+      part4: []
     }
+  },
+  mounted () {
+    let that = this
+    this.$axios.get('/Life/index ', {
+    })
+      .then(function (res) {
+        that.part1 = res.data.data
+      })
+    this.$axios.get('/Life/healthy ', {
+    })
+      .then(function (res) {
+        that.part3 = res.data.data
+      })
+    this.$axios.get('/Life/trading ', {
+    })
+      .then(function (res) {
+        that.part4 = res.data.data
+      })
   }
 }
 </script>
@@ -126,6 +150,9 @@ export default{
   margin-top:10px;
   flex: 2;
   font-size: 13px;
+}
+.healthy .healthy_right p{
+  margin-top: 5px;
 }
 .healthy_img{
   width: 10%;

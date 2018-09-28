@@ -14,63 +14,42 @@
           <router-link  tag="div"  to='/Party_member' class="nav_left"><img src="../../static/img/dangy@2x.png" alt=""><p>党员服务</p></router-link>
         </div>
       </div>
-      <div class="news">
+      <div class="news" v-for=" item in pages" >
         <div class="title">
           <span class="title_left">党建新闻</span>
-          <div class="title_right">
+          <router-link  tag="div"  to='/Party_footer/2' class="title_right">
             <span>更多</span><img src="../../static/img/going.png" alt="">
-          </div>
+          </router-link >
         </div>
-        <div class="title_content">
+        <router-link  tag="div"  :to='"Details/"+item.id' class="title_content">
           <div class="title_content_left" >
-          <p>【聚集】高扬党的旗帜 壮大主流声音</p>
-          <p>2018-08-24</p>
+          <p>{{item.post_title}}</p>
+          <p>{{item.create_time}}</p>
           </div>
           <div class="title_content_right" >
-            <div class="img"></div>
+            <div class="img" :style="'background-image:url('+item.image+')'"></div>
           </div>
-      </div>
+        </router-link>
     </div>
-      <div class="news">
-        <div class="title">
-          <span class="title_left">党建新闻</span>
-          <div class="title_right">
-            <span>更多</span><img src="../../static/img/going.png" alt="">
-          </div>
-        </div>
-        <div class="title_content">
-          <div class="title_content_left" >
-            <p>【聚集】高扬党的旗帜 壮大主流声音</p>
-            <p>2018-08-24</p>
-          </div>
-          <div class="title_content_right" >
-            <div class="img"></div>
-          </div>
-        </div>
       </div>
-      <div class="news">
-        <div class="title">
-          <span class="title_left">党建新闻</span>
-          <div class="title_right">
-            <span>更多</span><img src="../../static/img/going.png" alt="">
-          </div>
-        </div>
-        <div class="title_content">
-          <div class="title_content_left" >
-            <p>【聚集】高扬党的旗帜 壮大主流声音</p>
-            <p>2018-08-24</p>
-          </div>
-          <div class="title_content_right" >
-            <div class="img"></div>
-          </div>
-        </div>
-      </div>
-    </div>
 </template>
 
 <script>
 export default {
-  name: 'index'
+  name: 'index',
+  data () {
+    return {
+      pages: []
+    }
+  },
+  mounted () {
+    let that = this
+    this.$axios.get('/Index/index', {
+    })
+      .then(function (res) {
+        that.pages = res.data.data
+      })
+  }
 }
 </script>
 
@@ -166,7 +145,7 @@ export default {
   .title_content_right .img{
     width: 150px;
     height: 80px;
-    background-image: url(http://t2.hddhhn.com/uploads/tu/201808/9999/8058e4eaa6.jpg);
+    background-color: bisque;
     background-size:cover;
     background-position: center center;
   }

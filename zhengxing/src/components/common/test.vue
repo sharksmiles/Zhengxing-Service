@@ -2,9 +2,9 @@
   <div class="bottom_footer">
     <div class="bottom_container">
      <div class="bottom_container_right">
-      <p>{{data.content}}</p>
+      <p>{{data.post_title}}</p>
      </div>
-      <div class="bottom_container_left" :style="'background-image: url('+data.url+')'"></div>
+      <div class="bottom_container_left" :style="'background-image: url('+data.image+')'"></div>
      </div>
   </div>
 </template>

@@ -37,7 +37,7 @@ export default{
   },
   mounted () {
     let that = this
-    this.$axios.get('/Wenti/join', {
+    this.$axios.get('/Care/join', {
       params: {
         id: that.id,
         openid: that.openid
@@ -51,7 +51,7 @@ export default{
   methods: {
     join () {
       let that = this
-      this.$axios.get('/Wenti/tijiao', {
+      this.$axios.get('/Care/tijiao', {
         params: {
           id: that.id,
           openid: that.openid,
